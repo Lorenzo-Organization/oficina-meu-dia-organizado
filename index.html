@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel do meu dia | Stefani Transporte e Logística</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <!-- Cabeçalho: nome da tela, dia escolhido e relógio -->
+  <header class="topo">
+    <div>
+      <h1>Painel do meu dia</h1>
+      <p class="subtitulo" id="titulo-dia">Carregando...</p>
+    </div>
+    <div class="topo-direita">
+      <label class="campo-dia">
+        <span>Ver o dia</span>
+        <input type="date" id="dia">
+      </label>
+      <button type="button" id="btn-hoje" class="btn-claro">Hoje</button>
+      <div class="relogio" id="relogio">--:--</div>
+    </div>
+  </header>
+
+  <!-- Números de destaque -->
+  <section class="numeros">
+    <div class="numero">
+      <span id="n-compromissos">0</span>
+      <small>compromissos para hoje</small>
+    </div>
+    <div class="numero">
+      <span id="n-tarefas">0</span>
+      <small>tarefas para fazer hoje</small>
+    </div>
+    <div class="numero verde">
+      <span id="n-feitas">0</span>
+      <small>já feitas</small>
+    </div>
+    <div class="numero" id="caixa-proximo">
+      <span id="n-proximo">--</span>
+      <small id="n-proximo-texto">próximo compromisso</small>
+    </div>
+  </section>
+
+  <!-- Campo para digitar do jeito que fala + busca -->
+  <form id="form-novo" class="novo" autocomplete="off">
+    <input type="text" id="texto" placeholder="Digite do seu jeito: ligar pro posto às 14h" maxlength="140">
+    <select id="prioridade" title="Se for tarefa, vai para qual lista?">
+      <option value="hoje">faço hoje</option>
+      <option value="esperar">pode esperar</option>
+    </select>
+    <button type="submit" class="btn-laranja">Guardar</button>
+    <input type="search" id="busca" placeholder="Procurar na lista...">
+  </form>
+  <p class="aviso" id="aviso-form"></p>
+
+  <!-- Aviso de erro, só aparece se a planilha não carregar -->
+  <div id="erro" class="erro escondido"></div>
+
+  <!-- As duas colunas: compromissos e tarefas -->
+  <main class="colunas">
+    <section class="coluna">
+      <h2>Compromissos de hoje</h2>
+      <ul id="lista-compromissos" class="lista"></ul>
+    </section>
+
+    <section class="coluna">
+      <h2>Faço hoje</h2>
+      <ul id="lista-hoje" class="lista"></ul>
+      <h2 class="segundo-titulo">Pode esperar</h2>
+      <ul id="lista-esperar" class="lista"></ul>
+    </section>
+  </main>
+
+  <!-- Rodapé com os botões de apoio -->
+  <footer class="rodape">
+    <button type="button" id="btn-socio" class="btn-laranja">Copiar agenda para o sócio</button>
+    <span class="aviso" id="aviso-rodape"></span>
+    <button type="button" id="btn-limpar" class="btn-link">Apagar o que digitei nesta tela</button>
+  </footer>
+
+  <!-- Caixa que aparece por cima com o texto da agenda para o sócio -->
+  <div id="painel-agenda" class="painel-agenda escondido">
+    <div class="painel-caixa">
+      <h3>Agenda para o sócio</h3>
+      <textarea id="area-agenda" readonly rows="12"></textarea>
+      <div class="painel-botoes">
+        <button type="button" id="btn-copiar-de-novo" class="btn-laranja">Copiar de novo</button>
+        <button type="button" id="btn-fechar-agenda" class="btn-claro">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
